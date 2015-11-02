@@ -18,6 +18,20 @@ angular.module('dosPlannerApp')
     	{name: 'Perception', val: 5}
     ];
 
+    $scope.incrimentAttrPoint = function(attr){
+    	if (attr.val < 15){
+    		attr.val++;
+    	}
+    };
+
+    $scope.remainingAttrPoints = function(){
+    	var count = 0;
+    	angular.forEach($scope.attributes, function(attr){
+    		count = count + attr.val;
+    	});
+    	return 45 - count;
+    };
+
     $scope.talents = [
     	{'name' : 'All Skilled Up','desc' : 'Gives you 2 extra Ability Points to spend. (Note that if you wait for it to be unlocked in your Homestead, you can instead trade 1 unused Talent Point for 10 Ability Points)','req' : 'Level 3'},
 		{'name' : 'Anaconda', 'desc' : 'Increases your damage with crushing weapons by 10%.', 'req' : 'Single-Handed 1'},

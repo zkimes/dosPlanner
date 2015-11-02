@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <uib-tabset>
       <uib-tab heading="Attributes">
-        <div class="row" ng-repeat="a in attributes">
+        <div class="row" ng-repeat="a in attributes" ng-click="incrimentAttrPoint(a)">
           <span>
             {{a.name}}
           </span>
@@ -25,6 +25,7 @@
     </uib-tabset>
   </div>
   <div class="col-md-6">
-    detail window
+    detail window <br>
+    remaining attr points: {{remainingAttrPoints()}}
   </div>
 </div>
