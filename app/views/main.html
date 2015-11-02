@@ -1,3 +1,30 @@
-<div class="jumbotron">
-  Stuff
+<div class="row">
+  <div class="col-md-6">
+    <uib-tabset>
+      <uib-tab heading="Attributes">
+        <div class="row" ng-repeat="a in attributes">
+          <span>
+            {{a.name}}
+          </span>
+          <span class="pull-right">
+            {{a.val}}
+          </span>
+        </div>
+      </uib-tab>
+      <uib-tab heading="Abilities">
+        Abilities Details
+      </uib-tab>
+      <uib-tab heading="Skills">
+        Skills Details
+      </uib-tab>
+      <uib-tab heading="Talents">
+        <ul>
+          <li ng-repeat="t in talents">{{t.name}} - {{t.desc}}</li>
+        </ul>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+  <div class="col-md-6">
+    detail window
+  </div>
 </div>
