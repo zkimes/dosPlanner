@@ -17,7 +17,13 @@
             {{a.category}}
           </a>
           <span uib-collapse="isCollapsed">
-            <a class="list-group-item" ng-repeat="ability in a.abilities">{{ability}}</a>
+            <a class="list-group-item" ng-repeat="ability in a.abilities">
+              <span>{{ability.name}}</span>
+              <span class="pull-right">
+                <i class="fa fa-minus" ng-click="deincrimentAbilityPoint(ability)"></i> {{ability.val}} <i class="fa fa-plus" ng-click="incrimentAbilityPoint(ability)"></i>
+              </span>
+              
+            </a>
           </span>
         </div>
       </uib-tab>
@@ -32,7 +38,7 @@
     </uib-tabset>
   </div>
   <div class="col-md-6">
-    detail window <br>
-    remaining attr points: {{remainingAttrPoints()}}
+    remaining attr points: {{remainingAttrPoints()}} <br>
+    remaining abilityPoints: {{abilityPoints}}
   </div>
 </div>

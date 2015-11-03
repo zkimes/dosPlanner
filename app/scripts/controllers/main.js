@@ -20,66 +20,82 @@ angular.module('dosPlannerApp')
     	{name: 'Perception', val: 5}
     ];
 
+    $scope.abilityPoints = 49;
+
     $scope.abilities = [
     	{
     		category: 'Weapons',
     		abilities: [
-    			'Bow',
-    			'Crossbow',
-    			'Single-Handed',
-    			'Two-Handed',
-    			'Tenebrium'
+    			{name: 'Bow', val: 0},
+    			{name: 'Crossbow', val: 0},
+    			{name: 'Single-Handed', val: 0},
+    			{name: 'Two-Handed', val: 0},
+    			{name: 'Tenebrium', val: 0}
     		]
     	},
     	{
     		category: 'Defense',
     		abilities: [
-    			'Armour Specialist',
-    			'Body Building',
-    			'Shield Specialist',
-    			'Willpower'
+    			{name: 'Armour Specialist', val: 0},
+    			{name: 'Body Building', val: 0},
+    			{name: 'Shield Specialist', val: 0},
+    			{name: 'Willpower', val: 0}
     		]
     	},
     	{
     		category: 'Skills',
     		abilities: [
-    			'Aerotheurge',
-    			'Expert Marksman',
-    			'Geomancer',
-    			'Hydrosophist',
-    			'Man-at-arms',
-    			'Pyrokinetic',
-    			'Scoundrel',
-    			'Witchcraft'
+    			{name: 'Aerotheurge', val: 0},
+    			{name: 'Expert Marksman', val: 0},
+    			{name: 'Geomancer', val: 0},
+    			{name: 'Hydrosophist', val: 0},
+    			{name: 'Man-at-arms', val: 0},
+    			{name: 'Pyrokinetic', val: 0},
+    			{name: 'Scoundrel', val: 0},
+    			{name: 'Witchcraft', val: 0}
     		]
     	},
     	{
     		category: 'Personality',
     		abilities: [
-    			'Bartering',
-    			'Charisma',
-    			'Leadership',
-    			'Lucky Charm'
+    			{name: 'Bartering', val: 0},
+    			{name: 'Charisma', val: 0},
+    			{name: 'Leadership', val: 0},
+    			{name: 'Lucky Charm',  val: 0}
     		]
     	},
     	{
     		category: 'Craftsmanship',
     		abilities: [
-    			'Blacksmithing',
-    			'Crafting',
-    			'Loremaster',
-    			'Telekinesis'
+    			{name: 'Blacksmithing', val: 0},
+    			{name: 'Crafting', val: 0},
+    			{name: 'Loremaster', val: 0},
+    			{name: 'Telekinesis',  val: 0}
     		]
     	},
     	{
     		category: 'Nasty Deeds',
     		abilities: [
-    			'Lockpicking',
-    			'Pickpocketing',
-    			'Sneaking'
+    			{name: 'Lockpicking', val: 0},
+    			{name: 'Pickpocketing', val: 0},
+    			{name: 'Sneaking',  val: 0}
     		]
     	}
     ];
+
+    $scope.incrimentAbilityPoint = function(ability){
+    	if ($scope.abilityPoints >= ability.val + 1 && ability.val < 5){
+    		ability.val++;
+    		$scope.abilityPoints = $scope.abilityPoints - ability.val;
+    	}
+    };
+
+    $scope.deincrimentAbilityPoint = function(ability){
+    	if (ability.val > 0){
+    		$scope.abilityPoints = $scope.abilityPoints + ability.val;
+    		ability.val--;
+    	}
+    };
 
     $scope.incrimentAttrPoint = function(attr){
     	if (attr.val < 15 && $scope.remainingAttrPoints() > 0){
@@ -100,6 +116,397 @@ angular.module('dosPlannerApp')
     	});
     	return 45 - count;
     };
+
+    $scope.skills = [
+    	{
+    		ability: 'Aerotheurge', 
+    		skills: [
+    			{
+    				name: 'Air Shield', 
+    				reqLevel: 10, 
+    				skillLevel: 11, 
+    				actionPoints: 5, 
+    				baseCooldown: 6, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 11,
+    				reqAbilityLevel: 3,
+    				duration: 3,
+    				desc: 'Enchant self or ally with an air shield that absorbs X damage from all sources (not only Air). Does not stack with other elemental shield spells. 100% base chance to set DOS Buff Shielded (Air).'
+    			},
+    			{
+    				name: 'Become Air', 
+    				reqLevel: 4, 
+    				skillLevel: 5, 
+    				actionPoints: 3, 
+    				baseCooldown: 8, 
+    				range: 'Self',
+    				attr: 'Intelligence',
+    				minAttr: 9,
+    				reqAbilityLevel: 2,
+    				duration: 3,
+    				desc: 'Absorb half of all physical damage dealt. 100% base chance to set DOS Buff Air'
+    			},
+    			{
+    				name: 'Bitter Cold', 
+    				reqLevel: 1, 
+    				skillLevel: 2, 
+    				actionPoints: 3, 
+    				baseCooldown: 8, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 8,
+    				reqAbilityLevel: 1,
+    				duration: 3,
+    				desc: 'Chills a target. If the target gets chilled twice, they will become frozen. 100% base chance to set DOS Status Effect Chilled'
+    			},
+    			{
+    				name: 'Blitz Bolt', 
+    				reqLevel: 1, 
+    				skillLevel: 3, 
+    				actionPoints: 6, 
+    				baseCooldown: 1, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 8,
+    				reqAbilityLevel: 1,
+    				duration: 3,
+    				desc: 'Shoot a bolt of electricity that deals X-Y air damage. 35% base chance to set DOS Status Effect Stunned'
+    			},
+    			{
+    				name: 'Chain Lightning', 
+    				reqLevel: 18, 
+    				skillLevel: 18, 
+    				actionPoints: 9, 
+    				baseCooldown: 16, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 13,
+    				reqAbilityLevel: 5,
+    				duration: 3,
+    				desc: 'Shoot a stunning bolt of lightning that forks on impact and deals X-Y air damage to each target. Splits up to 5 times and looks for next target within a 7.0 meter radius. Can target terrain to electrify water.'
+    			},
+    			{
+    				name: 'Farseer', 
+    				reqLevel: 4, 
+    				skillLevel: 4, 
+    				actionPoints: 3, 
+    				baseCooldown: 7, 
+    				range: 12,
+    				attr: 'Intelligence',
+    				minAttr: 8,
+    				reqAbilityLevel: 1,
+    				duration: 4,
+    				desc: '100% base chance to grant a target improved Sight.'
+    			},
+    			{
+    				name: 'Feather Drop', 
+    				reqLevel: 10, 
+    				skillLevel: 10, 
+    				actionPoints: 4, 
+    				baseCooldown: 7, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 10,
+    				reqAbilityLevel: 3,
+    				duration: 0,
+    				desc: 'Throw an item or character up high and land it safely on the ground. Cannot target self.'
+    			},
+    			{
+    				name: 'Headvice', 
+    				reqLevel: 1, 
+    				skillLevel: 2, 
+    				actionPoints: 6, 
+    				baseCooldown: 3, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 8,
+    				reqAbilityLevel: 1,
+    				duration: 3,
+    				desc: 'A magical claw hold. Deals X-Y air damage.'
+    			},
+    			{
+    				name: 'Immune to Electrified', 
+    				reqLevel: 7, 
+    				skillLevel: 9, 
+    				actionPoints: 4, 
+    				baseCooldown: 5, 
+    				range: 5,
+    				attr: 'Intelligence',
+    				minAttr: 10,
+    				reqAbilityLevel: 3,
+    				duration: 2,
+    				desc: 'Make a target immune to being Electrified. Target still takes air damage.'
+    			},
+    			{
+    				name: 'Invisibility', 
+    				reqLevel: 7, 
+    				skillLevel: 8, 
+    				actionPoints: 6, 
+    				baseCooldown: 6, 
+    				range: 'Self',
+    				attr: 'Intelligence',
+    				minAttr: 10,
+    				reqAbilityLevel: 2,
+    				duration: 4,
+    				desc: 'Become invisible. 100% base chance to set DOS Status Effect InvisibleInvisible on self.'
+    			},
+    			{
+    				name: 'Lightning Bolt', 
+    				reqLevel: 10, 
+    				skillLevel: 12, 
+    				actionPoints: 6, 
+    				baseCooldown: 5, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 11,
+    				reqAbilityLevel: 3,
+    				duration: 3,
+    				desc: 'Shoot a stunning bolt of lightning that deals X-Y air damage. 65% base chance to set DOS Status Effect Stunned. Can target water and blood surfaces to electrify them. Electrified surfaces can stun both enemies and allies so beware.'
+    			},
+    			{
+    				name: 'Lightning Strike', 
+    				reqLevel: 7, 
+    				skillLevel: 7, 
+    				actionPoints: 8, 
+    				baseCooldown: 10, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 9,
+    				reqAbilityLevel: 2,
+    				duration: 3,
+    				desc: 'Jumps from one enemy target to the other, stunning them and dealing X-Y air damage. Jumps from one enemy to up to 3 nearby enemy targets. Move like lightning from one enemy to the next, and go right through them dealing air damage. Cannot target terrain. Caster will be moved behind last target. 30% base chance to set DOS Status Effect Stunned'
+    			},
+    			{
+    				name: 'Make Invisible', 
+    				reqLevel: 16, 
+    				skillLevel: 16, 
+    				actionPoints: 8, 
+    				baseCooldown: 6, 
+    				range: 14,
+    				attr: 'Intelligence',
+    				minAttr: 12,
+    				reqAbilityLevel: 4,
+    				duration: 5,
+    				desc: 'Set Invisible status on a target. Invisibility breaks when casting or attacking. 100% base chance to set DOS Status Effect Invisible'
+    			},
+    			{
+    				name: 'Remove Petrification', 
+    				reqLevel: 13, 
+    				skillLevel: 13, 
+    				actionPoints: 6, 
+    				baseCooldown: 7, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 11,
+    				reqAbilityLevel: 4,
+    				duration: 0,
+    				desc: 'Cures DOS Status Effect Petrification.'
+    			},
+    			{
+    				name: 'Shocking Touch', 
+    				reqLevel: 1, 
+    				skillLevel: 6, 
+    				actionPoints: 3, 
+    				baseCooldown: 7, 
+    				range: 3,
+    				attr: 'Intelligence',
+    				minAttr: 9,
+    				reqAbilityLevel: 2,
+    				duration: 3,
+    				desc: 'Electrify a nearby target. 100% base chance to set DOS Status Effect Stunned'
+    			},
+    			{
+    				name: 'Storm', 
+    				reqLevel: 18, 
+    				skillLevel: 19, 
+    				actionPoints: 9, 
+    				baseCooldown: 16, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 13,
+    				reqAbilityLevel: 5,
+    				duration: 2,
+    				desc: 'Create a lightning storm that randomly picks targets and deals X-Y air damage. Strikes 1 to 3 targets. Can electrify water surfaces. 90% base chance to set  DOS Status Effect Stunned'
+    			},
+    			{
+    				name: 'Summon Air Elemental', 
+    				reqLevel: 13, 
+    				skillLevel: 14, 
+    				actionPoints: 7, 
+    				baseCooldown: 6, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 12,
+    				reqAbilityLevel: 4,
+    				duration: 5,
+    				desc: 'Summon an Air Elemental in a 15 meter radius for 5 turns.'
+    			},
+    			{
+    				name: 'Teleportation', 
+    				reqLevel: 1, 
+    				skillLevel: 2, 
+    				actionPoints: 7, 
+    				baseCooldown: 10, 
+    				range: 15,
+    				attr: 'Intelligence',
+    				minAttr: 8,
+    				reqAbilityLevel: 1,
+    				duration: 0,
+    				desc: 'Throw an item or character up high and drop it to the ground, dealing X-Y crushing damage. Cannot target self. Target can be moved 15.0 meters away from its position.'
+    			},
+    			{
+    				name: 'Tornado', 
+    				reqLevel: 10, 
+    				skillLevel: 12, 
+    				actionPoints: 7, 
+    				baseCooldown: 8, 
+    				range: 'Unlimited',
+    				attr: 'Intelligence',
+    				minAttr: 11,
+    				reqAbilityLevel: 3,
+    				duration: 0,
+    				desc: 'Removes surfaces from the battlefield.'
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Expert Marksman', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Geomancer', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Hydrosophist', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Man-at-Arms', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Pyrokinetic', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Scoundrel', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Witchcraft', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	},
+    	{
+    		ability: 'Special', 
+    		skills: [
+    			{
+    				name: '', 
+    				reqLevel: 0, 
+    				skillLevel: 0, 
+    				actionPoints: 0, 
+    				baseCooldown: 0, 
+    				range: 0,
+    				attr: '',
+    				minAttr: 0,
+    				reqAbilityLevel: 0,
+    				duration: 0
+    			}
+    		]
+    	}
+    ];
 
     $scope.talents = [
     	{'name' : 'All Skilled Up','desc' : 'Gives you 2 extra Ability Points to spend. (Note that if you wait for it to be unlocked in your Homestead, you can instead trade 1 unused Talent Point for 10 Ability Points)','req' : 'Level 3'},
