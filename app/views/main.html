@@ -2,17 +2,21 @@
   <div class="col-md-6">
     <uib-tabset>
       <uib-tab heading="Attributes">
-        <div class="row" ng-repeat="a in attributes" ng-click="incrimentAttrPoint(a)">
+        <div class="row" ng-repeat="a in attributes">
           <span>
             {{a.name}}
           </span>
           <span class="pull-right">
-            {{a.val}}
+            <i class="fa fa-minus" ng-click="deincrimentAttrPoint(a)"></i> {{a.val}} <i class="fa fa-plus" ng-click="incrimentAttrPoint(a)"></i>
           </span>
         </div>
       </uib-tab>
       <uib-tab heading="Abilities">
-        Abilities Details
+        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+        <hr>
+        <div uib-collapse="isCollapsed">
+          <div class="well well-lg">Some content</div>
+        </div>
       </uib-tab>
       <uib-tab heading="Skills">
         Skills Details

@@ -9,6 +9,8 @@
  */
 angular.module('dosPlannerApp')
   .controller('MainCtrl', function ($scope) {
+  	$scope.isCollapsed = true;
+
     $scope.attributes = [
     	{name: 'Strength', val: 5},
     	{name: 'Dexterity', val: 5},
@@ -18,9 +20,76 @@ angular.module('dosPlannerApp')
     	{name: 'Perception', val: 5}
     ];
 
+    $scope.abilities = [
+    	{
+    		category: 'Weapons',
+    		abilites: [
+    			'Bow',
+    			'Crossbow',
+    			'Single-Handed',
+    			'Two-Handed',
+    			'Tenebrium'
+    		]
+    	},
+    	{
+    		category: 'Defense',
+    		abilites: [
+    			'Armour Specialist',
+    			'Body Building',
+    			'Shield Specialist',
+    			'Willpower'
+    		]
+    	},
+    	{
+    		category: 'Skills',
+    		abilities: [
+    			'Aerotheurge',
+    			'Expert Marksman',
+    			'Geomancer',
+    			'Hydrosophist',
+    			'Man-at-arms',
+    			'Pyrokinetic',
+    			'Scoundrel',
+    			'Witchcraft'
+    		]
+    	},
+    	{
+    		category: 'Personality',
+    		abilities: [
+    			'Bartering',
+    			'Charisma',
+    			'Leadership',
+    			'Lucky Charm'
+    		]
+    	},
+    	{
+    		category: 'Craftsmanship',
+    		abilities: [
+    			'Blacksmithing',
+    			'Crafting',
+    			'Loremaster',
+    			'Telekinesis'
+    		]
+    	},
+    	{
+    		category: 'Nasty Deeds',
+    		abilities: [
+    			'Lockpicking',
+    			'Pickpocketing',
+    			'Sneaking'
+    		]
+    	}
+    ];
+
     $scope.incrimentAttrPoint = function(attr){
-    	if (attr.val < 15){
+    	if (attr.val < 15 && $scope.remainingAttrPoints() > 0){
     		attr.val++;
+    	}
+    };
+
+    $scope.deincrimentAttrPoint = function(attr){
+    	if (attr.val > 5){
+    		attr.val--;
     	}
     };
 
