@@ -12,10 +12,13 @@
         </div>
       </uib-tab>
       <uib-tab heading="Abilities">
-        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
-        <hr>
-        <div uib-collapse="isCollapsed">
-          <div class="well well-lg">Some content</div>
+        <div class="list-group" ng-repeat="a in abilities">
+          <a class="list-group-item disabled" ng-click="isCollapsed = !isCollapsed">
+            {{a.category}}
+          </a>
+          <span uib-collapse="isCollapsed">
+            <a class="list-group-item" ng-repeat="ability in a.abilities">{{ability}}</a>
+          </span>
         </div>
       </uib-tab>
       <uib-tab heading="Skills">

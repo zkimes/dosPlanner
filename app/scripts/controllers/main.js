@@ -23,7 +23,7 @@ angular.module('dosPlannerApp')
     $scope.abilities = [
     	{
     		category: 'Weapons',
-    		abilites: [
+    		abilities: [
     			'Bow',
     			'Crossbow',
     			'Single-Handed',
@@ -33,7 +33,7 @@ angular.module('dosPlannerApp')
     	},
     	{
     		category: 'Defense',
-    		abilites: [
+    		abilities: [
     			'Armour Specialist',
     			'Body Building',
     			'Shield Specialist',
