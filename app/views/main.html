@@ -28,7 +28,20 @@
         </div>
       </uib-tab>
       <uib-tab heading="Skills">
-        Skills Details
+        <div class="list-group" ng-repeat="s in skills">
+          <a class="list-group-item disabled" ng-click="isCollapsed = !isCollapsed">
+            {{s.ability}}
+          </a>
+          <span uib-collapse="isCollapsed">
+            <a class="list-group-item" ng-repeat="skill in s.skills">
+              <span>{{skill.name}}</span>
+              <span class="pull-right">
+                {{skill.reqLevel}}
+              </span>
+              
+            </a>
+          </span>
+        </div>
       </uib-tab>
       <uib-tab heading="Talents">
         <ul>
