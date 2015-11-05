@@ -449,18 +449,18 @@ angular.module('dosPlannerApp')
     				desc: 'Remove the following Status Effects from the target. This does not prevent them from being reapplied after. Bleeding, Crippled, and Diseased.'
     			},
     			{
-    				name: '', 
-    				reqLevel: 0,
-    				skillLevel: 0,
-    				actionPoints: 0,
-    				baseCooldown: 0,
-    				range: 0,
+    				name: 'Infect', 
+    				reqLevel: 10,
+    				skillLevel: 10,
+    				actionPoints: 6,
+    				baseCooldown: 8,
+    				range: 3,
     				attr: 'Dexterity',
-    				minAttr: 0,
-    				reqAbilityLevel: 0,
+    				minAttr: 10,
+    				reqAbilityLevel: 3,
     				wepReq: 'none',
     				duration: 0,
-    				desc: ''
+    				desc: 'Plant a disease on a nearby target. 100% base chance to set DOS Status Effect Diseased'
     			},
     			{
     				name: '', 
