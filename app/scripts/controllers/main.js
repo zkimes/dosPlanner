@@ -463,32 +463,18 @@ angular.module('dosPlannerApp')
     				desc: 'Plant a disease on a nearby target. 100% base chance to set DOS Status Effect Diseased'
     			},
     			{
-    				name: '', 
-    				reqLevel: 0,
-    				skillLevel: 0,
-    				actionPoints: 0,
-    				baseCooldown: 0,
-    				range: 0,
+    				name: 'Mute', 
+    				reqLevel: 7,
+    				skillLevel: 7,
+    				actionPoints: 5,
+    				baseCooldown: 8,
+    				range: 16,
     				attr: 'Dexterity',
-    				minAttr: 0,
-    				reqAbilityLevel: 0,
+    				minAttr: 9,
+    				reqAbilityLevel: 2,
     				wepReq: 'none',
-    				duration: 0,
-    				desc: ''
-    			},
-    			{
-    				name: '', 
-    				reqLevel: 0,
-    				skillLevel: 0,
-    				actionPoints: 0,
-    				baseCooldown: 0,
-    				range: 0,
-    				attr: 'Dexterity',
-    				minAttr: 0,
-    				reqAbilityLevel: 0,
-    				wepReq: 'none',
-    				duration: 0,
-    				desc: ''
+    				duration: 3,
+    				desc: 'Mute a target. 100% base chance to set Muted'
     			},
     			{
     				name: '', 
